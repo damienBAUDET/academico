@@ -31,16 +31,15 @@
                 <register-user-info-component></register-user-info-component>
             </b-step-item>
 
-            <!--     <b-step-item :label="$t('')Photo" :clickable="activeStep > 2">
-        <h1 class="title has-text-centered">Profile picture</h1>
-        Lorem ipsum dolor sit amet.
-    </b-step-item> -->
+            <b-step-item :label="$t('step3')" :clickable="activeStep > 2">
+                <register-user-photo-component></register-user-photo-component>
+            </b-step-item>
 
-            <b-step-item :label="$t('step4')" :clickable="activeStep > 2">
+            <b-step-item :label="$t('step4')" :clickable="activeStep > 3">
                 <register-contacts-component></register-contacts-component>
             </b-step-item>
 
-            <b-step-item :label="$t('step5')" :clickable="activeStep > 3">
+            <b-step-item :label="$t('step5')" :clickable="activeStep > 4">
                 <register-user-finish-component></register-user-finish-component>
             </b-step-item>
         </b-steps>
@@ -56,8 +55,10 @@ Vue.use(Buefy);
 
 import { store } from "./store.js";
 import { EventBus } from "./eventBus.js";
+import RegisterUserInfoComponent from "./RegisterUserInfoComponent";
 
 export default {
+    components: {RegisterUserInfoComponent},
     data() {
         return {
             storeState: store.state,
