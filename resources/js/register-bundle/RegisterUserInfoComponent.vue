@@ -96,6 +96,24 @@
                 </ValidationProvider>
             </b-field>
 
+            <b-field :label="$t('foto')">
+                <validation-provider
+                    v-slot="{ errors }"
+                    name="foto"
+                >
+                    <b-upload v-model="formdata.photo">
+                        <a class="button is-primary">
+                            <b-icon icon="upload"></b-icon>
+                            <span>Click to upload</span>
+                        </a>
+                    </b-upload>
+                    <span class="file-name" v-if="formdata.photo">{{ formdata.photo.name }}</span>
+                    <div class="mt-3">Selected file: {{ formdata.photo ? formdata.photo.name : '' }}</div>
+
+                    <p class="help is-danger">{{ errors[0] }}</p>
+                </validation-provider>
+            </b-field>
+
             <b-button type="is-primary" @click="validateBeforeSubmit()">{{
                 $t("next")
             }}</b-button>
@@ -124,6 +142,7 @@ export default {
                 profession: null,
                 institution: null,
                 phonenumbers: [],
+                photo: null,
             },
         };
     },
